@@ -5383,30 +5383,30 @@
 		qcom,bus-bw-cfg-count = <7>;
 		qcom,bus-bw-cfg =
 		/** ICC Path 1 **/
-		<0 0>, /* no vote */
-		/* idle: 0-18 Mbps snoc/anoc: 100 Mhz ddr: 451.2 MHz */
-		<2250 390000>,
-		/* low: 18-60 Mbps snoc/anoc: 100 Mhz ddr: 451.2 MHz */
-		<7500 390000>,
-		/* medium: 60-240 Mbps snoc/anoc: 200 Mhz ddr: 451.2 MHz */
-		<30000 790000>,
-		/* high: 240-1080 Mbps snoc/anoc: 200 Mhz ddr: 451.2 MHz */
-		<100000 790000>,
-		/* very high: > 1080 Mbps snoc/anoc: 403 Mhz ddr: 451.2 MHz */
-		<175000 1600000>,
-		/* low (latency critical): 18-60 Mbps snoc/anoc: 200 Mhz
-		 * ddr: 547.2 MHz
-		 */
-		<7500 390000>,
+                <0 0>, /* no vote */
+                /* idle: 0-18 Mbps snoc/anoc: 100 Mhz ddr: 451.2 MHz */
+                <2250 390000>,  // UNVERÄNDERT
+                /* low: 18-60 Mbps snoc/anoc: 100 Mhz ddr: 451.2 MHz */
+                <7500 350000>,   // etwas reduziert (sparsam, aber stabil)
+                /* medium: 60-240 Mbps snoc/anoc: 150 Mhz ddr: 451.2 MHz */
+                <30000 550000>,  // stark stromsparend, aber noch gut für 5G/WLAN
+                /* high: 240-1080 Mbps snoc/anoc: 200 Mhz ddr: 451.2 MHz */
+                <100000 650000>, // reicht für schnellen Alltags-Durchsatz
+                /* very high: > 1080 Mbps snoc/anoc: 300 Mhz ddr: 451.2 MHz */
+                <175000 1000000>, // Gigabit noch möglich, aber viel weniger Verbrauch
+                /* low (latency critical): 18-60 Mbps snoc/anoc: 200 Mhz
+                * ddr: 547.2 MHz
+                */
+                <7500 350000>, // gleich wie low → spart Akku
 
 		/** ICC Path 2 **/
-		<0 0>,
-		<2250 1804800>,
-		<7500 1804800>,
-		<30000 1804800>,
-		<100000 1804800>,
-		<175000 6220800>,
-		<7500 2188800>;
+                <0 0>,
+                <2250 1750000>,   // -3% gegenüber 1804800
+                <7500 1750000>,   // -3%
+                <30000 1750000>,  // -3%
+                <100000 1770000>, // ca. -2%
+                <175000 6030000>, // ca. -3%
+                <7500 2134000>;   // ca. -2.5%
 
 		mhi,max-channels = <30>;
 		mhi,timeout = <10000>;
